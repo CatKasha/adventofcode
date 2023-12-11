@@ -1,4 +1,4 @@
-with open("1.txt", "r") as file:
+with open("1p1.txt", "r") as file:
     lines = file.read().split("\n")
     digits = []
     for line in lines:
