@@ -2,7 +2,7 @@ with open("1p1.txt", "r") as file:
     lines = file.read().split("\n")
     digits = []
     for line in lines:
-        if (line == [""]):
+        if (line == ""):
             continue
 
         in_line_digits = []
