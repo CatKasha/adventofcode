@@ -14,7 +14,6 @@ with open("4.txt", "r") as file:
 
         if (matches != 0):
             for j in range(matches):
-                for k in range(cards[i]):
-                    cards[i + 1 + j] += 1
+                cards[i + 1 + j] += 1 * cards[i]
 
     print(sum(cards))

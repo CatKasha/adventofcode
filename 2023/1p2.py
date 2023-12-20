@@ -1,10 +1,8 @@
 with open("1.txt", "r") as file:
-    lines = file.read().split("\n")
-    digits = []
-    for line in lines:
-        if (line == ""):
-            continue
+    lines = file.read().splitlines()
 
+    digits_sum = 0
+    for line in lines:
         in_line_digits = []
         number_list = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"]
 
@@ -22,9 +20,6 @@ with open("1.txt", "r") as file:
             else:
                 in_line_digits.append(number_list[(number_list.index(number[1]) - 9)])
 
-        digits.append(in_line_digits[0] + in_line_digits[-1])
+        digits_sum += int(in_line_digits[0] + in_line_digits[-1])
 
-    digits_sum = 0
-    for i in digits:
-        digits_sum += int(i)
     print(digits_sum)
