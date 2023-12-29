@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+</head>
+
+<body>
+    <textarea id="input"></textarea>
+    <input type="button" value="do the thing">
+    <span>answer: </span><span id="answer"></span>
+    <script>
+        let button = document.getElementsByTagName("input")[0];
+        button.addEventListener("click", () => {
+            let lines = document.getElementById("input").value.split("\n\n");
+            let answer = document.getElementById("answer");
+
+            let seeds = lines[0].split(" ").slice(1);
+            for (let i = 0; i < seeds.length; i++) {
+                seeds[i] = Number(seeds[i]);
+            }
+
+            for (let seed_i = 0; seed_i < seeds.length; seed_i++) {
+                for (let map_i = 1; map_i < 8; map_i++) {
+                    console.log(seeds.length, seed_i, map_i);
+                    let current_map = lines[map_i].split("\n").slice(1);
+                    for (let vals_i = 0; vals_i < current_map.length; vals_i++) {
+                        let vals = current_map[vals_i].split(" ");
+
+                        let destination = Number(vals[0]);
+                        let source = Number(vals[1]);
+                        let range_length = Number(vals[2]);
+
+                        let founded = false;
+                        for (let pos = source; pos < source + range_length; pos++) {
+                            if (seeds[seed_i] == pos) {
+                                seeds[seed_i] = destination + pos - source;
+                                founded = true;
+                                break;
+                            }
+                        }
+                        if (founded) {
+                            break;
+                        }
+                    }
+                }
+            }
+            console.log(Math.min(...seeds));
+            answer.textContent = Math.min(...seeds);
+        });
+    </script>
+</body>
+
+</html>
