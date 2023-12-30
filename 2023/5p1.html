@@ -31,15 +31,8 @@
                         let source = Number(vals[1]);
                         let range_length = Number(vals[2]);
 
-                        let founded = false;
-                        for (let pos = source; pos < source + range_length; pos++) {
-                            if (seeds[seed_i] == pos) {
-                                seeds[seed_i] = destination + pos - source;
-                                founded = true;
-                                break;
-                            }
-                        }
-                        if (founded) {
+                        if (source <= seeds[seed_i] && seeds[seed_i] <= source + range_length){
+                            seeds[seed_i] = destination + seeds[seed_i] - source;
                             break;
                         }
                     }
